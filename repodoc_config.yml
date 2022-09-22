@@ -1,0 +1,15 @@
+author_email: briantralah@gmail.com
+author_name: Tralah M Brian
+author_username: TralahM
+console_scripts:
+  - ''
+install_requires:
+  - requests
+language: python
+licence: GPLv2
+package_name: pyflexpay
+program_description: A Python SDK for the FlexPay API for Payments Aggregation
+program_name: flexpay
+readthedocs: true
+repo_name: pyflexpay
+version: '0.1'
