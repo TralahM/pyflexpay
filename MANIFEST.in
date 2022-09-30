@@ -1,4 +1,4 @@
-include LICENSE
+include LICENCE
 include *.py
 include README.md
 include readthedocs.yml
