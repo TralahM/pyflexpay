@@ -13,6 +13,7 @@ transaction (Check transaction).
 ### Table of Contents
 - [Payment Service](#Payment-Service)
 - [Check Transaction](#Check-transaction)
+- [Merchant Payout Service](#Merchant-Payout-Service)
 - [QuickStart](#QuickStart)
 - [Documentation/Usage](#Documentation)
 - [Contributing](#Contributing)
@@ -55,6 +56,24 @@ This service is used to check the status of a payment request previously sent to
 
 ### Example
 ![](check_transaction_example.png)
+
+## Merchant Payout Service
+This service allows a merchant to send money to a user’s phone number, from the merchant mobile
+money account. 
+- URL: https://ip:port/api/rest/v1/merchantPayOutService
+- Method: POST
+- Format: JSON
+
+### Request
+![](payment_service_request_params.png)
+
+
+### Response
+![](payment_service_response_params.png)
+
+
+### Result
+![](payment_service_result.png)
 
 ---
 
