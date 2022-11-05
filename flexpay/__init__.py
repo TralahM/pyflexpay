@@ -162,3 +162,81 @@ class API:
         }
         response = requests.post(url, headers=headers, data=data)
         return response.json()
+
+    def payout_service(
+        self,
+        merchant_code: str,
+        your_reference: str,
+        customer_phonenumber: str,
+        amount: typing.Union[int, str],
+        callbackUrl: str,
+        transaction_type: typing.Union[int, str] = 1,
+        currency: str = "CDF",
+    ):
+        """Merchant Payout Service.
+
+        :param merchant_code: Merchant Code FlexPay
+        :type merchant_code: str
+
+        :param transaction_type: The type of transaction
+            >> (``1``. mobile money, ``2``. Bank card)
+        :type transaction_type: typing.Union[int, str]
+
+        :param your_reference: Your internal reference for the transaction
+        :type your_reference: str
+
+        :param customer_phonenumber: Phone number of the customer.
+        :type customer_phonenumber: str
+
+        :param amount: The transaction amount.
+        :type amount: typing.Union[int, str]
+
+        :param currency: The transaction currency (CDF or USD).
+        :type currency: str
+
+        :param callbackUrl: The Callback URL where the transaction
+            result will be sent.
+        :type callbackUrl: str
+
+        :returns: a dict object with details code, message, orderNumber.
+        :rtype:  dict
+
+        **Description of Response Parameters**
+
+        :code: code to indicate the status of the request
+            ``0`` if correctly received ``1`` if not correctly received.
+
+        :message: A description of the response
+
+        :orderNumber: FlexPay internal reference for the transaction.
+
+        A request is sent to the CallBack URL to provide status of the
+        transaction.
+
+        **Description fields of Result.**
+
+        :Code: code to indicate the status of the request
+            ``0`` if correctly received ``1`` if not correctly received.
+
+        :Reference: Your internal reference of the transaction
+
+        :Provider_reference: The transaction reference from the mobile money
+            operator if the transaction was successful.
+
+        :orderNumber: FlexPay internal reference of the transaction.
+
+        """
+        endpoint = "/merchantPayOutService"
+        url = self._get_url(endpoint)
+        headers = self._get_headers()
+        data = {
+            "merchant": merchant_code,
+            "type": transaction_type,
+            "reference": your_reference,
+            "phone": customer_phonenumber,
+            "amount": amount,
+            "currency": currency,
+            "callbackUrl": callbackUrl,
+        }
+        response = requests.post(url, headers=headers, data=data)
+        return response.json()
