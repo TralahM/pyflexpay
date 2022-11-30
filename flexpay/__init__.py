@@ -36,7 +36,7 @@ class API:
         """Returrn full remote url for the endpoint begining with slash."""
         if not endpoint.startswith("/"):
             endpoint = f"/{endpoint}"
-        return f"https://{self.ip}:{self.port}/api/rest/v1{endpoint}"
+        return f"http://{self.ip}:{self.port}/api/rest/v1{endpoint}"
 
     def _get_headers(self):
         """Return the Authorization header dict used in all requests."""
@@ -81,7 +81,11 @@ class API:
         endpoint = f"/check/{orderNumber}"
         url = self._get_url(endpoint)
         headers = self._get_headers()
-        response = requests.get(url, headers=headers)
+        response = requests.get(
+            url,
+            headers=headers,
+            verify=False,
+        )
         return response.json()
 
     def payment_service(
@@ -160,7 +164,12 @@ class API:
             "currency": currency,
             "callbackUrl": callbackUrl,
         }
-        response = requests.post(url, headers=headers, data=data)
+        response = requests.post(
+            url,
+            headers=headers,
+            data=data,
+            verify=False,
+        )
         return response.json()
 
     def payout_service(
@@ -238,5 +247,10 @@ class API:
             "currency": currency,
             "callbackUrl": callbackUrl,
         }
-        response = requests.post(url, headers=headers, data=data)
+        response = requests.post(
+            url,
+            headers=headers,
+            data=data,
+            verify=False,
+        )
         return response.json()
