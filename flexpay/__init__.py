@@ -86,6 +86,8 @@ class API:
             headers=headers,
             verify=False,
         )
+        print(f"Response status code: {response.status_code}")
+        print(f"Response: {response.content}")
         return response.json()
 
     def payment_service(
@@ -170,6 +172,8 @@ class API:
             data=data,
             verify=False,
         )
+        print(f"Response status code: {response.status_code}")
+        print(f"Response: {response.content}")
         return response.json()
 
     def payout_service(
@@ -253,4 +257,6 @@ class API:
             data=data,
             verify=False,
         )
+        print(f"Response status code: {response.status_code}")
+        print(f"Response: {response.content}")
         return response.json()
