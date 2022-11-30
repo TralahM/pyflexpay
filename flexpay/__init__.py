@@ -36,7 +36,9 @@ class API:
         """Returrn full remote url for the endpoint begining with slash."""
         if not endpoint.startswith("/"):
             endpoint = f"/{endpoint}"
-        return f"http://{self.ip}:{self.port}/api/rest/v1{endpoint}"
+        url = f"http://{self.ip}:{self.port}/api/rest/v1{endpoint}"
+        print(url)
+        return url
 
     def _get_headers(self):
         """Return the Authorization header dict used in all requests."""
