@@ -36,7 +36,7 @@ class API:
         """Returrn full remote url for the endpoint begining with slash."""
         if not endpoint.startswith("/"):
             endpoint = f"/{endpoint}"
-        url = f"http://{self.ip}:{self.port}/flexpay/api/rest/v1{endpoint}"
+        url = f"http://{self.ip}:{self.port}/api/rest/v1{endpoint}"
         print(url)
         return url
 
